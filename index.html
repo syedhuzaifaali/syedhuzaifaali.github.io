@@ -1,12 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Creative Portfolio — Visual Artist & Designer. Japanese-inspired minimal luxury." />
+  <title>RYŌSHIN — Creative Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ink': '#0a0a0a',
+            'parchment': '#f5f3ef',
+            'stone': '#888480',
+            'mist': '#c4c0b8',
+            'gold': '#c8a97e',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<!-- ============ PAGE LOADER ============ -->
+<div id="page-loader">
+  
 
+<div class="loader-logo">
+  <span>RENDERING <br> EXPERIENCE</span>
+</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+  <div class="loader-count">0%</div>
+</div>
+
+<!-- ============ PAGE TRANSITION ============ -->
+<div id="page-transition"></div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+<div id="cursor-text"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<nav>
+  <a href="index.html" class="nav-logo" data-transition>
+    <img src="images/logo.png"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active" data-transition>Home</a></li>
+    <li><a href="work.html" data-transition>Work</a></li>
+    <li><a href="gallery.html" data-transition>Gallery</a></li>
+    <li><a href="mailto:hello@ryoshin.com">Contact</a></li>
+  </ul>
+  <button class="nav-menu-btn" aria-label="Toggle Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <a href="index.html" data-transition>Home</a>
+  <a href="work.html" data-transition>Work</a>
+  <a href="gallery.html" data-transition>Gallery</a>
+  <a href="mailto:hello@ryoshin.com">Contact</a>
+</div>
+
+<!-- ============ HERO SECTION ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- Gradient background as image placeholder -->
+    <div class="hero-bg-img" style="background: linear-gradient(135deg, #1a1814 0%, #0a0a0a 40%, #151210 100%); width:100%; height:100%;"></div>
+    <div class="hero-noise"></div>
+  </div>
+
+  <!-- Decorative vertical lines -->
+  <div class="absolute inset-0 z-0 opacity-5" style="background-image: repeating-linear-gradient(90deg, #f5f3ef 0px, #f5f3ef 1px, transparent 1px, transparent 120px);"></div>
+
+  <div class="hero-content">
+   <p class="hero-eyebrow">Frontend Developer & UI/UX Engineer</p>
+
+<h1 class="hero-title">
+  <span class="text-mask" data-delay="0">
+    <span class="text-mask-inner"></span>
+  </span>
+
+  <span class="text-mask-hero" data-delay="0.06">
+    <span class="text-mask-inner"><em>Design, Code</em></span>
+  </span>
+
+  <span class="text-mask-hero" data-delay="0.12">
+    <span class="text-mask-inner">Transform</span>
+  </span>
+</h1>
+
+<div class="hero-sub">
+  <p class="hero-desc">
+    Clean. Interactive. Performance-driven.<br />
+    I design and develop scalable web interfaces using React, SharePoint, GSAP, and modern frontend technologies—focused on seamless user experience and precision-driven UI.
+  </p>
+</div>
+      
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee-section">
+ <div class="marquee-track">
+  <span class="marquee-item">SharePoint Development<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">React JS<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Fluent UI<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Frontend Development<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">UI/UX Design<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Figma to HTML<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Tailwind CSS<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">GSAP Animation<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">CMS Integration<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">WordPress<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Shopify<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Responsive Design<span class="marquee-dot">◆</span></span>
+  <span class="marquee-item">Performance Optimization<span class="marquee-dot">◆</span></span>
+</div>
+</div>
+
+<!-- ============ ABOUT / SPLIT SECTION ============ -->
+<section class="split-section" style="background: var(--black);">
+  <div class="split-left reveal-scale">
+    <div class="split-img split-img-reveal" style="background: linear-gradient(160deg, #1c1916 0%, #2d2420 50%, #1a1512 100%); min-height: 600px; position: relative; overflow: hidden;">
+      <!-- Abstract composition -->
+       <img src="images/huzaifa_pic.png"/>
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:200px; height:280px; border:1px solid rgba(200,169,126,0.2);"></div>
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-60%,-40%); width:160px; height:220px; border:1px solid rgba(200,169,126,0.1);"></div>
+      <div style="position:absolute; bottom:20%; right:20%; width:80px; height:80px; background:rgba(200,169,126,0.06); border-radius:50%;"></div>
+      <div style="position:absolute; top:15%; left:15%; font-family:var(--font-jp); font-size:11px; letter-spacing:0.3em; color:rgba(200,169,126,0.3); writing-mode:vertical-rl;">美しさの中に静けさがある</div>
+    </div>
+  </div>
+
+  <div class="split-right">
+    <p class="section-label">About</p>
+    <h2 class="section-title">
+  <span class="text-mask"><span class="text-mask-inner">Designing modern</span></span>
+  <span class="text-mask"><span class="text-mask-inner">digital experiences</span></span>
+  <span class="text-mask"><span class="text-mask-inner"><em>through</em> code & creativity.</span></span>
+</h2>
+
+<p class="section-body reveal-up" data-delay="0.2">
+  I’m Huzaifa — a Frontend & UI/UX Developer focused on transforming Figma designs into responsive, high-performance digital experiences using HTML, Tailwind CSS, JavaScript, GSAP, WordPress, Shopify, and modern frontend technologies.
+</p>
+
+<p class="section-body reveal-up" data-delay="0.35">
+  Experienced in building corporate, portfolio, and enterprise websites for international and local clients, with expertise in CMS integration, animation-driven interfaces, performance optimization, and clean user-centered design systems.
+</p>
+    <a href="work.html" class="btn-outline reveal-up" data-delay="0.5" data-transition>
+      <span>View Selected Work</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats-section" style="border-top:1px solid var(--gray-700); border-bottom:1px solid var(--gray-700);">
+  <div class="stat-item">
+    <div class="stat-num">
+      <span data-count="12" data-suffix="">0</span><sup>+</sup>
+    </div>
+    <div class="stat-label">Years of Practice</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">
+      <span data-count="84" data-suffix="">0</span><sup>+</sup>
+    </div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">
+      <span data-count="31" data-suffix="">0</span><sup>+</sup>
+    </div>
+    <div class="stat-label">Exhibitions Held</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">
+      <span data-count="18" data-suffix="">0</span>
+    </div>
+    <div class="stat-label">International Awards</div>
+  </div>
+</div>
+
+<!-- ============ HORIZONTAL SCROLL SECTION ============ -->
+<div class="h-scroll-wrapper" style="background:var(--black);">
+  <!-- Section intro above pinned area -->
+  <div style="padding: 8rem 3rem 4rem; max-width:1400px; margin:0 auto;" class="h-scroll-intro">
+    <p class="section-label reveal-up">Selected Series</p>
+    <h2 class="section-title reveal-up" data-delay="0.1" style="max-width:600px;">
+      Work that<br /><em>lingers</em> beyond<br />the viewing.
+    </h2>
+  </div>
+
+  <div class="h-scroll-container" style="padding: 0 3rem 8rem;">
+    <!-- Card 1 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(160deg,#1e1b18,#2a2420); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+        <img src="images/p-saudiemaar.jpg">
+        <div style="width:140px; height:200px; border:1px solid rgba(200,169,126,0.25); position:relative;">
+          
+          <div style="position:absolute; inset:-12px; border:1px solid rgba(200,169,126,0.1);"></div>
+        </div>
+        <div style="position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, rgba(26,21,18,0.95), transparent);"></div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">01 — Photography</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">Interval Studies</h3>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(200deg,#171510,#201d1a); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+        <img src="images/w-2.jpg">
+        <div style="width:180px; height:120px; background:rgba(200,169,126,0.04); position:relative; border:1px solid rgba(200,169,126,0.15);">
+          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px; border-radius:50%; border:1px solid rgba(200,169,126,0.2);"></div>
+        </div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">02 — Identity</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">Void &amp; Form</h3>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(120deg,#12100e,#1d1a16); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+        <img src="images/p-seltrade.jpg">
+        <div style="font-family:var(--font-jp);font-size:60px;font-weight:200;color:rgba(200,169,126,0.12);letter-spacing:0.2em;">静</div>
+        <div style="position:absolute; top:20%; right:20%; width:100px; height:140px; border:1px solid rgba(200,169,126,0.12);"></div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">03 — Editorial</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">Stillness</h3>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(180deg,#1a1714,#0e0c0a); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+        <img src="images/p-ama.jpg">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; width:140px;">
+          <div style="height:80px; background:rgba(200,169,126,0.07); border:1px solid rgba(200,169,126,0.15);"></div>
+          <div style="height:80px; background:rgba(200,169,126,0.04); border:1px solid rgba(200,169,126,0.1); margin-top:20px;"></div>
+          <div style="height:80px; background:rgba(200,169,126,0.05); border:1px solid rgba(200,169,126,0.12); margin-top:-20px;"></div>
+          <div style="height:80px; background:rgba(200,169,126,0.03); border:1px solid rgba(200,169,126,0.08);"></div>
+        </div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">04 — Installation</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">Grid Studies</h3>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(210deg,#191613,#0d0b09); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+       <img src="images/p-puma.jpg">
+        <div style="width:160px; height:160px; border-radius:50%; border:1px solid rgba(200,169,126,0.15); display:flex; align-items:center; justify-content:center;">
+          <div style="width:80px; height:80px; border-radius:50%; border:1px solid rgba(200,169,126,0.2); background:rgba(200,169,126,0.03);"></div>
+        </div>
+        <div style="position:absolute; top:18%; left:15%; font-size:9px; letter-spacing:0.3em; color:rgba(200,169,126,0.2); text-transform:uppercase;">Motion</div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">05 — Motion</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">Orbital</h3>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="h-scroll-card">
+      <div style="background:linear-gradient(150deg,#18150f,#1c1915); width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+       <img src="images/p-abdulhvac.jpg">
+        <div style="position:absolute; inset:-40px; background:radial-gradient(ellipse at 30% 60%, rgba(200,169,126,0.06) 0%, transparent 70%);"></div>
+        <div style="font-family:var(--font-display); font-size:48px; font-weight:300; color:rgba(245,243,239,0.06); letter-spacing:0.1em; text-align:center; line-height:1.2;">間<br/>MA</div>
+      </div>
+      <div class="h-scroll-card-info">
+        <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">06 — Concept</p>
+        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);">MA — The Space Between</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FEATURED WORK GRID ============ -->
+<section style="background:var(--black); padding-top: 8rem;">
+  <div style="padding:0 3rem 4rem; max-width:1400px; margin:0 auto;">
+    <p class="section-label reveal-up">Featured Projects</p>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <h2 class="section-title reveal-up" data-delay="0.1" style="max-width:500px;">
+        Selected<br /><em>recent</em> work.
+      </h2>
+      <a href="work.html" class="btn-outline reveal-up" data-delay="0.2" data-transition>
+        <span>All Work</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="work-grid" style="margin:0 3px;" data-cursor data-cursor-text="View">
+    <!-- Featured item 1 -->
+    <div class="work-item" data-cursor data-cursor-text="Explore">
+      <div class="work-img" style="background:linear-gradient(160deg,#1c1714,#2c2820,#1a1510); width:100%; height:100%;">
+        <img src="images/saudiemaar.png"/>
+      </div>
+      <div class="work-overlay">
+        <span class="work-num">01</span>
+        <h3 class="work-title">Kara — Brand Identity</h3>
+        <p class="work-cat">Identity / Art Direction</p>
+      </div>
+      <div class="work-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="work-item" data-cursor data-cursor-text="Explore">
+      <div class="work-img" style="background:linear-gradient(200deg,#181411,#222018); width:100%; height:100%;">
+        <img src="images/p3.png"/>
+      </div>
+      <div class="work-overlay">
+        <span class="work-num">02</span>
+        <h3 class="work-title">Mugen Exhibition</h3>
+        <p class="work-cat">Photography / Editorial</p>
+      </div>
+      <div class="work-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="work-item" data-cursor data-cursor-text="Explore">
+      <div class="work-img" style="background:linear-gradient(120deg,#14120f,#201d19); width:100%; height:100%;">
+        <img src="images/p2.png"/>
+      </div>
+      <div class="work-overlay">
+        <span class="work-num">03</span>
+        <h3 class="work-title">Seki Motion Study</h3>
+        <p class="work-cat">Motion / Film</p>
+      </div>
+      <div class="work-arrow">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY SECTION ============ -->
+<section style="padding:12rem 3rem; max-width:1400px; margin:0 auto; text-align:center;">
+  <p class="section-label reveal-up" style="justify-content:center; gap:1rem;">
+    Philosophy
+  </p>
+  <blockquote style="font-family:var(--font-display); font-size:clamp(2rem,4.5vw,4.5rem); font-weight:300; line-height:1.2; letter-spacing:-0.01em; color:var(--white); max-width:900px; margin:0 auto 3rem;">
+    <span class="text-mask"><span class="text-mask-inner">"In the space between</span></span>
+    <span class="text-mask"><span class="text-mask-inner"><em>light and shadow,</em></span></span>
+    <span class="text-mask"><span class="text-mask-inner">truth quietly resides."</span></span>
+  </blockquote>
+  <p class="reveal-up" style="font-size:12px; letter-spacing:0.2em; color:var(--gray-500); text-transform:uppercase;">
+    — Ryōshin, 2024
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ CTA SECTION ============ -->
+<section style="padding:10rem 3rem; text-align:center; position:relative; overflow:hidden;">
+  <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%, rgba(200,169,126,0.04) 0%, transparent 70%); pointer-events:none;"></div>
+  <p class="section-label reveal-up" style="justify-content:center;">Start a Project</p>
+  <h2 style="font-family:var(--font-display); font-size:clamp(3rem,7vw,7rem); font-weight:300; line-height:0.95; letter-spacing:-0.02em; color:var(--white); margin-bottom:3rem;" class="reveal-up" data-delay="0.1">
+    Let's create<br /><em>something</em><br />remarkable.
+  </h2>
+  <a href="mailto:hello@ryoshin.com" class="btn-outline reveal-up" data-delay="0.3" style="margin:0 auto; font-size:12px; padding:1.2rem 3rem;">
+    <span>Begin Conversation</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-section reveal-up">
+      <span class="footer-logo"><img src="images/logo.png"></span>
+      <p class="footer-tagline">Visual Artist & Creative Director<br />based in Tokyo, Japan.<br /><br />
+        <span style="font-family:var(--font-jp); font-size:11px; color:var(--gray-700);">良心 — Good Conscience</span>
+      </p>
+    </div>
+    <div class="reveal-up" data-delay="0.1">
+      <p class="footer-nav-title">Navigation</p>
+      <ul class="footer-nav-list">
+        <li><a href="index.html" data-transition>Home</a></li>
+        <li><a href="work.html" data-transition>Work</a></li>
+        <li><a href="gallery.html" data-transition>Gallery</a></li>
+        <li><a href="mailto:hello@ryoshin.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="reveal-up" data-delay="0.2">
+      <p class="footer-nav-title">Connect</p>
+      <ul class="footer-nav-list">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Behance</a></li>
+        <li><a href="#">Are.na</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Ryōshin. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#">IG</a>
+      <a href="#">BH</a>
+      <a href="#">AR</a>
+      <a href="#">LI</a>
+    </div>
+    <p class="footer-copy">Tokyo · Paris · New York</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
